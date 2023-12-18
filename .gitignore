@@ -20,6 +20,7 @@ logs/
 # Environment variables
 .env
 .env.*
+env
 
 # IDE
 .vscode/
