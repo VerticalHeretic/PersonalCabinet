@@ -1,9 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from typing import List
 from sqlalchemy.orm import Session
-from fastapi import Depends, status
-from sqlalchemy.orm import Session
-from app import models, schemas
+from fastapi import Depends
 from app.database import get_db
 from app.routers.crud import cabinets_crud
 from app.schemas import CabinetCreate, Cabinet
