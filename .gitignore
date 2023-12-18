@@ -29,3 +29,6 @@ logs/
 # Miscellaneous
 *.swp
 .DS_Store
+
+# Ignore SQLite Databases
+*.db
