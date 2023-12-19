@@ -10,11 +10,17 @@ server = os.getenv("POSTGRES_SERVER", "db")  # default to "db" if not set
 db = os.getenv("POSTGRES_DB")
 port = os.getenv("POSTGRES_PORT", "5432")  # default to "5432" if not set
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{server}:{port}/{db}"
+# SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{server}:{port}/{db}"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./app.db"
+
+# engine = create_engine(
+#     SQLALCHEMY_DATABASE_URL, pool_pre_ping=True, connect_args={"options": "-c timezone=utc"}
+# )
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, pool_pre_ping=True, connect_args={"options": "-c timezone=utc"}
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
 )
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
