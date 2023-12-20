@@ -9,7 +9,7 @@ def get_items(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Item).offset(skip).limit(limit).all()
 
 def create_item(db: Session, item: schemas.ItemCreate):
-    db_item = models.Item(name=item.name, type=item.type, description=item.description)
+    db_item = models.Item(name=item.name, type=item.type, description=item.description, cabinet_id=item.cabinet_id)
     db.add(db_item)
     db.commit()
     db.refresh(db_item)

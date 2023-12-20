@@ -5,13 +5,13 @@ class ItemBase(BaseModel):
     name: str
     type: Optional[str] = None
     description: Optional[str] = None
+    cabinet_id: int
 
 class ItemCreate(ItemBase):
     pass
 
 class Item(ItemBase):
     id: int
-    cabinet_id: int
 
     class Config:
         orm_mode = True
